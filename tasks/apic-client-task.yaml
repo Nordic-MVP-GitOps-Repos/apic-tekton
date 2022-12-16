@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: apic-client
+  annotations:
+    tekton.dev/tags: cli
+    tekton.dev/displayName: "IBM API Connect client"
+    tekton.dev/platforms: "linux/amd64"
+spec:
+  workspaces:
+    - name: workspace
+      optional: true
+  params:
+    - name: APIC_CLIENT_IMAGE
+      description: image containing apic client binaries
+      type: string
+    - name: SCRIPT
+      description: The apic commands to run
+      type: string
+      default: "apic help"
+  steps:
+    - name: apic-client
+      image: $(params.APIC_CLIENT_IMAGE)
+      script: |
+        #!/usr/bin/env bash
+        $(params.SCRIPT)
