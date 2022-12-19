@@ -9,7 +9,6 @@ metadata:
 spec:
   workspaces:
     - name: workspace
-      optional: false
       description: workspace containing files to be used as input to apic commands
     - name: client-credentials
       optional: true
