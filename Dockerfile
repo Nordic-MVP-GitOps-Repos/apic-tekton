@@ -5,7 +5,7 @@ FROM $APIC_CLIENT_DOWNLOADS_IMAGE as apic-client-downloads
 USER root
 
 RUN microdnf update && \
-    microdnf install --nodocs tar && \
+    microdnf install --nodocs tar gzip && \
     tar -xvf /dist/toolkit-linux.tgz && \
     chmod +x apic-slim && \
     mv apic-slim ./apic
