@@ -9,7 +9,14 @@ metadata:
 spec:
   workspaces:
     - name: workspace
+      optional: false
+      description: workspace containing files to be used as input to apic commands
+    - name: client-credentials
       optional: true
+      description: ConfigMap containing client credentials json file identifying the target APIC installation
+    - name: basic-auth
+      optional: true
+      description: Secret containing username and password to login to the management server
   params:
     - name: APIC_CLIENT_IMAGE
       description: image containing apic client binaries
