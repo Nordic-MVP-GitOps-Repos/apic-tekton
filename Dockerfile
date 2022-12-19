@@ -12,7 +12,7 @@ RUN microdnf update && \
     
 FROM alpine:latest
 
-RUN apk add --no-cache bash curl
+RUN apk add --no-cache bash curl yq
 COPY --from=apic-client-downloads ./apic ./bin/apic
 
 RUN apic version --accept-license --live-help false
