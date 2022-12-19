@@ -1,4 +1,4 @@
-ARG APIC_CLIENT_DOWNLOADS_IMAGE=cp.icr.io/cp/apic/ibm-apiconnect-management-client-downloads-server@sha256:2fc3cc6f77f44ecce25f382578d0aa9a167ef0d598ad04648d8fba64d8c8e6ac
+ARG APIC_CLIENT_DOWNLOADS_IMAGE=cp.icr.io/cp/apic/ibm-apiconnect-management-client-downloads-server@sha256:4eb454532578f708d890f98348757e1524a9f6c46663acd994d8f7754c7d47b6
 
 FROM $APIC_CLIENT_DOWNLOADS_IMAGE as apic-client-downloads
 
