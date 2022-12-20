@@ -11,15 +11,12 @@ spec:
     - name: workspace
       description: workspace containing files to be used as input to apic commands
       readOnly: true
-      optional: true
     - name: client-credentials
       description: ConfigMap containing client credentials json file identifying the target APIC installation.
       readOnly: true
-      optional: false
     - name: basic-auth
       description: Secret containing username and password to login to the management server
       readOnly: true
-      optional: false
   params:
     - name: APIC_CLIENT_IMAGE
       description: image containing apic client binaries
