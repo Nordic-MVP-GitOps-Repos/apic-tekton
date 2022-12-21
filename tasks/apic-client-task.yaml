@@ -25,9 +25,35 @@ spec:
       description: The apic commands to run
       type: string
       default: "apic help"
+    - name: MGMT_SERVER_URL
+      description: URL to managment server api endpoint. Should end in /api. See https://www.ibm.com/docs/en/api-connect/10.0.x?topic=config-apic-configset
+      type: string
+    - name: PROVIDER_ORG
+      type: string
+    - name: CATALOG
+      type: string
   steps:
     - name: apic-client
       image: $(params.APIC_CLIENT_IMAGE)
       script: |
         #!/usr/bin/env bash
+        
+        export USERNAME=$(cat $(workspaces.basic-auth.path)/username)
+        export PASSWORD=$(cat $(workspaces.basic-auth.path)/password)
+        
+        set -x
+        
+        apic config:set cloud=$(params.MGMT_SERVER_URL)
+        apic config:set org=$(params.MGMT:SERVER_URL)/orgs/$(params.PROVIDER_ORG)
+        apic config:set catalog=$(params.MGMT:SERVER_URL)/catalogs/$(params.PROVIDER_ORG)/$(params.CATALOG)
+        
+        apic client-creds:clear
+        apic client-creds:set /workspace/client-credentials/client-creds.json
+        
+        set +x 
+        echo 'Logging in to $SERVER...'
+        apic login -s $SERVER --username $USERNAME --password $PASSWORD --realm provider/default-idp-2
+            
+        set -x
+        
         $(params.SCRIPT)
