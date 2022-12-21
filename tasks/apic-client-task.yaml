@@ -44,15 +44,15 @@ spec:
         set -x
         
         apic config:set cloud=$(params.MGMT_SERVER_URL)
-        apic config:set org=$(params.MGMT:SERVER_URL)/orgs/$(params.PROVIDER_ORG)
-        apic config:set catalog=$(params.MGMT:SERVER_URL)/catalogs/$(params.PROVIDER_ORG)/$(params.CATALOG)
+        apic config:set org=$(params.MGMT_SERVER_URL)/orgs/$(params.PROVIDER_ORG)
+        apic config:set catalog=$(params.MGMT_SERVER_URL)/catalogs/$(params.PROVIDER_ORG)/$(params.CATALOG)
         
         apic client-creds:clear
         apic client-creds:set /workspace/client-credentials/client-creds.json
         
         set +x 
-        echo 'Logging in to $SERVER...'
-        apic login -s $SERVER --username $USERNAME --password $PASSWORD --realm provider/default-idp-2
+        echo 'Logging in to $MGMT_SERVER_URL...'
+        apic login -s --username $USERNAME --password $PASSWORD --realm provider/default-idp-2
             
         set -x
         
