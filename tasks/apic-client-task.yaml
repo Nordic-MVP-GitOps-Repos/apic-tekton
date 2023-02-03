@@ -49,7 +49,7 @@ spec:
         
         apic client-creds:clear
         
-        cat $(workspaces.basic-auth.path)/client-credentials.json
+        cat $(workspaces.client-credentials.path)/client-creds.json
         
         apic client-creds:set $(workspaces.basic-auth.path)/client-credentials.json
         
