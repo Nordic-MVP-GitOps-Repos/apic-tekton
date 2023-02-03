@@ -51,6 +51,8 @@ spec:
         
         cat $(workspaces.client-credentials.path)/client-creds.json
         
+        cat $(workspaces.basic-auth.path)/client-credentials.json
+        
         apic client-creds:set $(workspaces.basic-auth.path)/client-credentials.json
         
         set +x 
