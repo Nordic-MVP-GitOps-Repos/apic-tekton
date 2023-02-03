@@ -48,6 +48,9 @@ spec:
         apic config:set catalog=$(params.MGMT_SERVER_URL)/catalogs/$(params.PROVIDER_ORG)/$(params.CATALOG)
         
         apic client-creds:clear
+        
+        cat $(workspaces.basic-auth.path)/client-credentials.json
+        
         apic client-creds:set $(workspaces.basic-auth.path)/client-credentials.json
         
         set +x 
