@@ -11,7 +11,7 @@ spec:
     - name: workspace
       description: workspace containing files to be used as input to apic commands
       readOnly: true
-    - name: basic-auth
+    - name: apim-credentials
       description: Secret containing username and password to login to the management server. Also, the client-credentials.json file from API Manager
       readOnly: true
   params:
@@ -35,8 +35,8 @@ spec:
       script: |
         #!/usr/bin/env bash
          
-        export USERNAME=$(cat $(workspaces.basic-auth.path)/username)
-        export PASSWORD=$(cat $(workspaces.basic-auth.path)/password)
+        export USERNAME=$(cat $(workspaces.apim-credentials.path)/username)
+        export PASSWORD=$(cat $(workspaces.apim-credentials.path)/password)
         
         set -x
       
@@ -46,7 +46,7 @@ spec:
         
         apic client-creds:clear
         
-        apic client-creds:set $(workspaces.basic-auth.path)/client-credentials.json
+        apic client-creds:set $(workspaces.apim-credentials.path)/client-credentials.json
         
         set +x 
         
