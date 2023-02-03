@@ -11,11 +11,8 @@ spec:
     - name: workspace
       description: workspace containing files to be used as input to apic commands
       readOnly: true
-    - name: client-credentials
-      description: ConfigMap containing client credentials json file identifying the target APIC installation.
-      readOnly: true
     - name: basic-auth
-      description: Secret containing username and password to login to the management server
+      description: Secret containing username and password to login to the management server. Also, the client-credentials.json file from API Manager
       readOnly: true
   params:
     - name: APIC_CLIENT_IMAGE
@@ -48,10 +45,6 @@ spec:
         apic config:set catalog=$(params.MGMT_SERVER_URL)/catalogs/$(params.PROVIDER_ORG)/$(params.CATALOG)
         
         apic client-creds:clear
-        
-        cat $(workspaces.client-credentials.path)/client-creds.json
-        
-        cat $(workspaces.basic-auth.path)/client-credentials.json
         
         apic client-creds:set $(workspaces.basic-auth.path)/client-credentials.json
         
