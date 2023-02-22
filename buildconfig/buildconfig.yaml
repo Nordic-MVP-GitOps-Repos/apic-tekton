@@ -2,7 +2,7 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-  name: apic-tekton-img
+  name: apic-client
 ---
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
@@ -13,7 +13,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'apic-tekton-img:latest'
+      name: 'apic-client:latest'
   strategy:
     type: Docker
     dockerStrategy:
