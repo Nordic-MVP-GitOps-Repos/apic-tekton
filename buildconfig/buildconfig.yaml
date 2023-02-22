@@ -1,0 +1,30 @@
+
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: apic-tekton-img
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: apic-tekton-build
+  namespace: ibmoffices
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'apic-tekton-img:latest'
+  strategy:
+    type: Docker
+    dockerStrategy:
+      pullSecret:
+        name: ibm-entitlement-key
+      imageOptimizationPolicy: SkipLayers
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/Nordic-MVP-GitOps-Repos/apic-tekton'
+      ref: main
+  triggers:
+    - type: ConfigChange
+  runPolicy: Serial
