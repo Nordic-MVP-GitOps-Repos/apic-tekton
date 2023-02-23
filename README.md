@@ -10,7 +10,7 @@ To build the image, you need to be logged in to the IBM container registry.
 2. Go to **Get Entitlement Key** to retrieve the key
 3. Use the key and the username 'cp' to login to the container registry `podman login cp.icr.io -u cp -p your-key` 
 
-You can also build using a [Tekton pipeline](pipeline/README.md)
+You can also build using a [Tekton pipeline](pipeline/README.md) or with the [BuildConfig](buildconfig/buildconfig.yaml)
 
 ## Sample scripts for apic
 
