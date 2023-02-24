@@ -7,7 +7,6 @@ kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
   name: apic-tekton-build
-  namespace: ibmoffices
 spec:
   output:
     to:
