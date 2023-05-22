@@ -23,7 +23,7 @@ spec:
       type: string
       default: "apic help"
     - name: MGMT_SERVER_URL
-      description: URL to managment server api endpoint. Should end in /api. See https://www.ibm.com/docs/en/api-connect/10.0.x?topic=config-apic-configset
+      description: URL to management server api endpoint. Should end in /api. See https://www.ibm.com/docs/en/api-connect/10.0.x?topic=config-apic-configset. In openshift, this will look something like apic-clust-92138f56-platform-api
       type: string
     - name: PROVIDER_ORG
       type: string
